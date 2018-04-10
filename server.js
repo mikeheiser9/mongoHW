@@ -20,22 +20,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 
-
-app.get("/scrape", function(req, res){
-    axios.get("")
-})
-
-
-// Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/week18Populater");
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-// Set mongoose to leverage built in JavaScript ES6 Promises
-// Connect to the Mongo DB
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
-});
-
 // Start the server
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");

@@ -1,0 +1,12 @@
+#headerImg {
+    margin-top: 50px;
+}
+
+#noScapeHolder {
+    padding: 20px;
+    background-color: darkslategrey;
+    text-align: center;
+    font-family: 'Graduate', cursive;
+    font-weight: 900px;
+    color: lemonchiffon;
+}
