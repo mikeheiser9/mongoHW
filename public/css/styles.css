@@ -8,5 +8,31 @@
     text-align: center;
     font-family: 'Graduate', cursive;
     font-weight: 900px;
-    color: lemonchiffon;
+    color: red;
+    font-size: 24px;
+    border: 2px solid red;
+}
+
+#scrapeBut {
+    padding: 30px;
+    background-color: darkslategrey;
+    font-family: 'Graduate', cursive;
+    border: 5px solid red;
+    color: red;
+    margin-top: 15px;
+    font-size: 40px;
+}
+
+.nav-wrapper {
+    background-color: red;
+    font-family: 'Graduate', cursive;
+    color: darkslategrey;
+}
+
+.brand-logo {
+    margin-left: 15px;
+}
+
+#nav-mobile li {
+    margin-right: 15px;
 }
