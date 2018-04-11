@@ -8,9 +8,21 @@
     text-align: center;
     font-family: 'Graduate', cursive;
     font-weight: 900px;
-    color: red;
+    color: lightgray;
     font-size: 24px;
     border: 2px solid red;
+}
+
+.scrapedData {
+    padding: 20px;
+    background-color: darkslategrey;
+    text-align: center;
+    font-family: 'Graduate', cursive;
+    font-weight: 900px;
+    color: lightgray;
+    font-size: 18px;
+    border: 2px solid red;
+    text-align: left;
 }
 
 #scrapeBut {
@@ -18,7 +30,7 @@
     background-color: darkslategrey;
     font-family: 'Graduate', cursive;
     border: 5px solid red;
-    color: red;
+    color: lightgray;
     margin-top: 15px;
     font-size: 40px;
 }
@@ -35,4 +47,13 @@
 
 #nav-mobile li {
     margin-right: 15px;
+}
+
+.saveButton {
+    padding: 10px;
+    font-family: 'Graduate', cursive;
+    margin-top: 10px;
+    border: 2px solid red;
+    background-color: lightgrey;
+    color: darkslategray;
 }
