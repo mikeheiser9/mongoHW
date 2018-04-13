@@ -69,7 +69,22 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".addNote", function () {
-
         $('.modal-trigger').leanModal();       
     })
+
+    // 
+    // $.ajax({
+    //     method: "POST",
+    //     url: "/articles/" + thisId,
+    //     data: {   
+    //       body: $("#bodyinput").val()
+    //     }
+    //   })
+    //     // With that done
+    //     .then(function(data) {
+    //       // Log the response
+    //       console.log(data);
+    //       // Empty the notes section
+    //       $("#notes").empty();
+    //     });
 });
