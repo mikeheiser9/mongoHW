@@ -71,7 +71,5 @@ $(document).ready(function () {
     $(document).on("click", ".addNote", function () {
 
         $('.modal-trigger').leanModal();       
-        // var thisId = $(this).attr("id");
-        // $('.modal').modal('.', paramName);
     })
 });
