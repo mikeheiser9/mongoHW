@@ -67,3 +67,21 @@
     color: darkslategray;
     margin-left: 40px;
 }
+
+.deleteSaved {
+    padding: 10px;
+    font-family: 'Graduate', cursive;
+    margin-top: 10px;
+    border: 2px solid red;
+    background-color: lightgrey;
+    color: darkslategray;
+    margin-left: 40px;
+}
+
+.modal {
+    max-height: 90%;
+  }
+  
+  .modal-form-row {
+    margin-bottom: 0px;
+  }

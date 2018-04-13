@@ -56,11 +56,27 @@ module.exports = function (app) {
     app.post("/articles/deleteSaved/:id", function (req,res){
         db.Article.findOneAndUpdate({ _id : req.params.id}, {
             saved: false
-        }).then(function (response){
+        }, {new: true}).then(function (response){
             console.log(response);
             res.json(response);
         })
     })
+
+    // add note
+    app.post("/articles/:id", function(req, res) {
+            db.Note.create(req.body)
+              .then(function(dbNote) {
+                return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+              })
+              .then(function(dbArticle) {
+                // If we were able to successfully update an Article, send it back to the client
+                res.json(dbArticle);
+              })
+              .catch(function(err) {
+                // If an error occurred, send it to the client
+                res.json(err);
+              });
+          });
 
  
 
