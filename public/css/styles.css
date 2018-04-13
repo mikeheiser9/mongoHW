@@ -57,3 +57,13 @@
     background-color: lightgrey;
     color: darkslategray;
 }
+
+.addNote {
+    padding: 10px;
+    font-family: 'Graduate', cursive;
+    margin-top: 10px;
+    border: 2px solid red;
+    background-color: lightgrey;
+    color: darkslategray;
+    margin-left: 40px;
+}

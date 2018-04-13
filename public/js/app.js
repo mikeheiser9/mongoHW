@@ -1,75 +1,69 @@
 $(document).ready(function() {
 // Scrape button
+
+$.ajax ({
+    method: "GET",
+    url:"/articles"
+}).then(function (data) {
+    for (let i = 0; i < data.length; i++) {
+        $(".articleContainer").append("<div class= 'card scrapedData'>"+"<span>"+"Title: "+ data[i].title + "</span>" + "<br><br>" +"<span>"+"Link: "+ data[i].link + "</span>" + "<br><br>" + "<button class='saveButton' id=" + data[i]._id +">" + 'Save Article' + "</button>" + "</div>")
+
+        if (data[i].saved === true) {
+            $(".scrapedData").append("<button class='addNote' id=" +data[i]._id + ">" + 'Add Note' + "</button>")
+        }
+    }
+    if (data) {
+        $("#noScapeHolder").hide();
+    }
+   
+});
+
+
 $("#scrapeBut").on("click", function() {
+    console.log("this is working");
     $.ajax({
         method: "GET",
-        url: "/articles",
+        url: "/scrape",
     }).then(function(data) {
-        // window.location = "/"
         $("#noScapeHolder").hide();
+            $.ajax({
+                method: "GET",
+                url: "/articles"
+            })
+            .then(function (data) {
         for (let i = 0; i < data.length; i++) {
-            $(".articleContainer").append("<div class= 'card scrapedData'>"+"<span>"+"Title: "+ data[i].title + "</span>" + "<br><br>" +"<span>"+"Link: "+ data[i].link + "</span>" + "<br><br>" + "<button class='saveButton'>"+ 'Save Article' + "</button>" + "</div>")
+            $(".articleContainer").append("<div class= 'card scrapedData'>"+"<span>"+"Title: "+ data[i].title + "</span>" + "<br><br>" +"<span>"+"Link: "+ data[i].link + "</span>" + "<br><br>" + "<button class='saveButton' id=" + data[i]._id +">" + 'Save Article' + "</button>" + "</div>")
         }
+
+    })
     })
 });
 
 
 //Handle Save Article button
-$(".saveButton").on("click", function() {
-    var thisId = $(this).attr("data-id");
+$(document).on("click", ".saveButton", function() {
+    var thisId = $(this).attr("id");
     $.ajax({
         method: "POST",
         url: "/articles/saved/" + thisId
     }).then(function(data) {
-        window.location = "/"
+        console.log(data)
+        // console.log(data.saved); 
     })
 });
 
-// //Handle Delete Article button
-// $(".delete").on("click", function() {
-//     var thisId = $(this).attr("data-id");
-//     $.ajax({
-//         method: "POST",
-//         url: "/articles/delete/" + thisId
-//     }).done(function(data) {
-//         window.location = "/saved"
-//     })
-// });
+    $(document).on("click", ".deleteButton", function() {    $.ajax({
+        method: "POST",
+        url: "/articles/deleteSaved/" + thisId
+    }).then(function(data) {
+        console.log(data) 
+    })
+});
 
-// //Handle Save Note button
-// $(".saveNote").on("click", function() {
-//     var thisId = $(this).attr("data-id");
-//     if (!$("#noteText" + thisId).val()) {
-//         alert("please enter a note to save")
-//     }else {
-//       $.ajax({
-//             method: "POST",
-//             url: "/notes/save/" + thisId,
-//             data: {
-//               text: $("#noteText" + thisId).val()
-//             }
-//           }).done(function(data) {
-//               // Log the response
-//               console.log(data);
-//               // Empty the notes section
-//               $("#noteText" + thisId).val("");
-//               $(".modalNote").modal("hide");
-//               window.location = "/saved"
-//           });
-//     }
-// });
 
-// //Handle Delete Note button
-// $(".deleteNote").on("click", function() {
-//     var noteId = $(this).attr("data-note-id");
-//     var articleId = $(this).attr("data-article-id");
-//     $.ajax({
-//         method: "DELETE",
-//         url: "/notes/delete/" + noteId + "/" + articleId
-//     }).done(function(data) {
-//         console.log(data)
-//         $(".modalNote").modal("hide");
-//         window.location = "/saved"
-//     })
-// });
+$(document).on("click", ".addNote", function() {
+    var thisId = $(this).attr("id");
+
+
+})
 });

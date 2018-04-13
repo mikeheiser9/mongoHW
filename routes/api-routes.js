@@ -42,20 +42,29 @@ module.exports = function (app) {
               });
     });
 
-    app.get("/articles/:id", function(req, res) {
-        // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-        db.Article.findOne({ _id: req.params.id })
-          // ..and populate all of the notes associated with it
-          .populate("note")
-          .then(function(dbArticle) {
-            // If we were able to successfully find an Article with the given id, send it back to the client
-            res.json(dbArticle);
-          })
-          .catch(function(err) {
-            // If an error occurred, send it to the client
-            res.json(err);
-          });
-      });
+
+    app.post("/articles/saved/:id", function (req,res){
+        db.Article.findOneAndUpdate({ _id : req.params.id}, {
+            saved: true
+        }, {new: true}).then(function (save){
+            console.log(save);
+            res.json(save);
+        })
+    })
+
+    // delete from saved
+    app.post("/articles/deleteSaved/:id", function (req,res){
+        db.Article.findOneAndUpdate({ _id : req.params.id}, {
+            saved: false
+        }).then(function (response){
+            console.log(response);
+            res.json(response);
+        })
+    })
+
+ 
+
+      
 //     // Route for grabbing a specific Article by id, populate it with it's note
 // app.get("/articles/:id", function(req, res) {
 //     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
