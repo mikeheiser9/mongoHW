@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/mikeheiser9/mongoHW/issues"
   },
-  "homepage": "https://github.com/mikeheiser9/mongoHW#readme",
+  "homepage": "https://github.com/mikeheiser9/mongoHW",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",

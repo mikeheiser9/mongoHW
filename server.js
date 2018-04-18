@@ -23,9 +23,24 @@ app.use(express.static("public"));
 require("./routes/api-routes.js")(app);
 // require("./routes/html-routes.js")(app);
 
-// Connect to MongoDB
-mongoose.connect("mongodb://localhost/mongoHW");
+var databaseUri = "mongodb://localhost/mongoHW"
 
+// Connect to MongoDB
+// mongoose.connect("mongodb://localhost/mongoHW");
+
+if(process.env.MONOGOD_URI) {
+  mongoose.connect(process.env.MONOGOD_URI);
+} else {
+  mongoose.connect(databaseUri);
+}
+
+mongoose.connection.on("error", function(err){
+  console.log("Mongoose Error: ", err);
+});
+
+mongoose.connection.once("open", function(){
+  console.log("Mongoose connection successful");
+});
 // Start the server
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");
