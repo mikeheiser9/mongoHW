@@ -9,7 +9,7 @@ module.exports = function (app) {
         console.log("calling axios");
         axios.get("https://bleacherreport.com/").then(function (response) {
             var $ = cheerio.load(response.data);
-            console.log("axios finished");
+            console.log(response.data);
 
             $("a.articleTitle").each(function (i, element) {
                 var result = {};
