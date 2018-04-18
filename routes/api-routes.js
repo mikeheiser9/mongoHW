@@ -3,13 +3,10 @@ var cheerio = require("cheerio");
 var db = require("../models/index.js");
 
 module.exports = function (app) {
-    console.log("hitting route");
     // Scrape and store in MongoDB, create collections
     app.get('/scrape', function (req, res) {
-        console.log("calling axios");
         axios.get("https://bleacherreport.com/").then(function (response) {
             var $ = cheerio.load(response.data);
-            console.log(response.data);
 
             $("a.articleTitle").each(function (i, element) {
                 var result = {};
