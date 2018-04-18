@@ -27,9 +27,9 @@ var databaseUri = "mongodb://localhost/mongoHW"
 
 // Connect to MongoDB
 // mongoose.connect("mongodb://localhost/mongoHW");
-console.log(process.env.MONOGODB_URI)
-if(process.env.MONOGODB_URI) {
-  mongoose.connect(process.env.MONOGODB_URI);
+console.log(process.env.MONGODB_URI)
+if(process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI);
 } else {
   mongoose.connect(databaseUri);
 }
